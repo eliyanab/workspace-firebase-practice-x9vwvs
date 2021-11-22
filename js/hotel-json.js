@@ -15,6 +15,26 @@ testJson["lastname"] = "zhang";
 testJson["location"] = "aiken";
 console.log(testJson);
 
+console.log('here');
+firebase.auth().onAuthStateChanged((user)=>{
+  if (user) {
+    console.log(user.email);
+  }
+  else{
+    console.log('no user');
+  }
+});
+
+$('#signout').click(function(){
+  firebase.auth().signOut().then(() => {
+    //sign-out successful
+    //redirect the page
+  }).catch((error) => {
+    //an error happened
+  })
+
+});
+
 // enter data in
 $("input[type='button']").click(function(e) {
   //get the value of form
